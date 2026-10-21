@@ -1,0 +1,42 @@
+@model IEnumerable<EFexemplo.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<h1>Categorias</h1>
+
+<p>
+    <a asp-action="Create">Criar nova categoria</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Nome)
+                </td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-categoriaid="@item.CategoriaId">Editar</a> |
+
+                    <a asp-action="Details"
+                       asp-route-categoriaid="@item.CategoriaId">Detalhes</a> |
+
+                    <a asp-action="Delete"
+                       asp-route-categoriaid="@item.CategoriaId">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
